@@ -51,5 +51,15 @@ public abstract class Animal {
 
     public abstract void sonidoEmite();
 
+    public abstract void tipoAnimal();
 
+    @Override
+    public String toString() {
+        return "{" +
+                "nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", peso=" + peso +
+                ", genero='" + genero + '\'' +
+                '}';
+    }
 }
