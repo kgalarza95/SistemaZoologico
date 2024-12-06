@@ -15,7 +15,7 @@ public class Perro extends Animal {
 
     @Override
     public void sonidoEmite() {
-        System.out.println("Guau, guau");
+        System.out.println(TIPO+" "+"Guau, guau");
     }
 
     @Override

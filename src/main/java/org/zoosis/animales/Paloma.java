@@ -15,7 +15,7 @@ public class Paloma extends Animal {
 
     @Override
     public void sonidoEmite() {
-        System.out.println("Coo, coo");
+        System.out.println(TIPO+" "+"Coo, coo");
     }
 
     @Override
