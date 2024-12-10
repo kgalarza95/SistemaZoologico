@@ -1,6 +1,6 @@
-package org.zoosis.animales;
+package org.zoosis.model.animales;
 
-import org.zoosis.general.Animal;
+import org.zoosis.model.animales.general.Animal;
 
 public class Perro extends Animal {
 

@@ -1,4 +1,4 @@
-package org.zoosis.general;
+package org.zoosis.model.animales.general;
 
 public abstract class Animal {
 

@@ -1,23 +1,49 @@
 package org.zoosis;
 
 
-import org.zoosis.animales.Gato;
-import org.zoosis.animales.Paloma;
-import org.zoosis.animales.Perro;
-import org.zoosis.general.Animal;
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+import com.sun.net.httpserver.HttpServer;
+import org.zoosis.model.animales.Gato;
+import org.zoosis.model.animales.Paloma;
+import org.zoosis.model.animales.Perro;
+import org.zoosis.model.animales.general.Animal;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        ejemploRapid();
-        menu();
+        initServer();
+
+//        ejemploRapid();
+//        menu();
     }
 
+    public static void initServer() throws IOException {
+        HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
+        server.createContext("/api/hello", new HelloHandler());
+        server.setExecutor(null); // creates a default executor
+        server.start();
+        System.out.println("Server started on port 8000");
+    }
+
+    static class HelloHandler implements HttpHandler {
+        @Override
+        public void handle(HttpExchange exchange) throws IOException {
+            String response = "Hello World!";
+            exchange.sendResponseHeaders(200, response.getBytes().length);
+            OutputStream os = exchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+        }
+    }
 
     private static void ejemploRapid() {
         banner();
